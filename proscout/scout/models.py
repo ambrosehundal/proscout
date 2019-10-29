@@ -16,3 +16,10 @@ class Athlete(models.Model):
 
 
 
+
+class Profile(models.Model):
+    headline = models.CharField(max_length=150)
+    summary = models.CharField(max_length=200)
+
+
+
