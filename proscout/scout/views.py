@@ -9,4 +9,6 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello Scoutmaster")
+    template='templates/index.html'
+    return render(request, template)
+    # return HttpResponse("Hello Scouts")

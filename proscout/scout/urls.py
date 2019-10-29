@@ -5,6 +5,6 @@ from scout import views
 
 
 urlpatterns = [
-    url('', views.index),
+    url('homepage', views.index),
     
 ]
