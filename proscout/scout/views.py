@@ -9,6 +9,6 @@ from django.http import HttpResponse
 
 
 def index(request):
-    template='templates/index.html'
+    template = 'templates/index.html'
     return render(request, template)
     # return HttpResponse("Hello Scouts")

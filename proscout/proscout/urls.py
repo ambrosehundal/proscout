@@ -24,7 +24,7 @@ from scout import views
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url('admin/', admin.site.urls),
-    url('scout/', include('scout.urls')),
+    url('', include('scout.urls')),
     url('accounts/', include('django.contrib.auth.urls')),
    
 
