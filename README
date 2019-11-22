@@ -5,3 +5,5 @@ Frontend - React.js
 Backend - Django (Python)
 
 Deploy in Docker container on AWS
+
+Include ML on django models (read tutorials)
