@@ -12,7 +12,7 @@ class Athlete(models.Model):
     birth_date = models.CharField(max_length=20)
     hometown = models.CharField(max_length=40)
     country = models.CharField(max_length=30)
-    primary_sport = models.CharField(max_length=20)
+    
 
 
 
