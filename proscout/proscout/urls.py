@@ -26,6 +26,7 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url('', include('scout.urls')),
     url('accounts/', include('django.contrib.auth.urls')),
+    url('register/')
    
 
 
