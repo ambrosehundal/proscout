@@ -15,18 +15,21 @@ Including another URLconf
 """
 from django.contrib.auth import views as auth_views
 from django.conf.urls import url
+from django.urls import re_path
 from django.contrib import admin
 from django.conf.urls import include
-from scout import views
+from registration import views as v
+from scout import views as s
 
 
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url('admin/', admin.site.urls),
-    url('', include('scout.urls')),
+    url('home/', include('scout.urls')),
     url('accounts/', include('django.contrib.auth.urls')),
-    url('register/')
+    url('register/', v.register, name="register"),
+    re_path(r'^$', s.index, name="index")
    
 
 
