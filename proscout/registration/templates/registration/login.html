@@ -1,34 +1,20 @@
-{% comment %} {% extends "main/base.html" %} {% endcomment %}
 <html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-{% block title %} Create a new account  {% endblock %}
 {% load crispy_forms_tags %}
 
-{% comment %} {% block content %}
-{% endblock %} {% endcomment %}
-
 <body>
+<form method="post" class="form-group">
+    {% csrf_token %}
+    {{form |crispy }}
+    <button type="submit" class="btn btn-success">Login </button>
+    <br>
+    <p>Dont have an account?  <a href="/register">Register here</a></p>
+</form>
 
-
-
-<div class="col-md-8 col-lg-8">
-
-    <form method="POST" class="form-group">
-        {% csrf_token %}
-        {{form | crispy}}
-        <button type="submit" class="btn btn-success">Register </button>
-    </form>
-</div>
-
-
-
-
-{% comment %} 
-<div class="col-md-2">
-</div> {% endcomment %}
 
 </body>
+
 
 
 </html>
