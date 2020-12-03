@@ -20,27 +20,14 @@ def index(request):
 
 
 def profile_homepage(request):
+    current_user = request.user
+    print(current_user)
     template = 'homepage.html'
-    return render(request, template)
+    return render(request, template, {'user': current_user})
 
 
 
-# function to register/sign up a new user
 
-def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)  #usercreationform is a django form to create a new user
-        if form.is_valid():
-            form.save() #creates the new user
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username, password = password)
-            login(request, user)
-            return HttpResponseRedirect('profile')
-    else:
-        form = UserCreationForm()
-
-    return render(request, 'index.html', {'form' : form })
 
 
 
