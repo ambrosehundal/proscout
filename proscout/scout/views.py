@@ -9,6 +9,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 
+from scout.forms import UserProfileForm
+
+
 # Create your views here.
 
 
@@ -24,6 +27,13 @@ def profile_homepage(request):
     print(current_user)
     template = 'homepage.html'
     return render(request, template, {'user': current_user})
+
+
+def edit_profile(request):
+    form = UserProfileForm()
+    template = 'edit_profile.html'
+
+    return render(request, template, {'form': form})
 
 
 
