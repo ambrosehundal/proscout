@@ -24,16 +24,12 @@ def index(request):
 
 def profile_homepage(request):
     current_user = request.user
+    form = UserProfileForm()
     print(current_user)
     template = 'homepage.html'
-    return render(request, template, {'user': current_user})
+    return render(request, template, {'user': current_user, 'form': form})
 
 
-def edit_profile(request):
-    form = UserProfileForm()
-    template = 'edit_profile.html'
-
-    return render(request, template, {'form': form})
 
 
 

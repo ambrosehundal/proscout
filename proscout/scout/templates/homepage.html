@@ -47,6 +47,17 @@
             <p><a href="/login">Login </a></p>
         {% endif %}
   
+
+    <br>
+
+<div class="col-md-8 col-lg-8">
+
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        {{form | crispy}}
+        
+    </form>
+</div>
     </body>
 
 
