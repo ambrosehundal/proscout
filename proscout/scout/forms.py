@@ -5,3 +5,4 @@ from scout.models import Profile
 class UserProfileForm(ModelForm):
     class Meta:
         model = Profile
+        fields = ['age', 'height', 'weight', 'hometown', 'country', 'headline', 'summary']
