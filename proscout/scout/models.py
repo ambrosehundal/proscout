@@ -25,6 +25,7 @@ class Profile(models.Model):
     weight = models.IntegerField(default = 180)
     hometown = models.CharField(max_length=40, blank=True)
     country = models.CharField(max_length=30, null=True)
+    disciplines = models.CharField(max_length=255, blank=True) # martial art disciplines
     headline = models.CharField(max_length=150, blank=True)
     summary = models.CharField(max_length=200, blank=True)
 
