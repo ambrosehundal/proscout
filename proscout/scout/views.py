@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
-
+from django.db import models
 from django.http import HttpResponse, HttpResponseRedirect
 
 
@@ -31,6 +31,21 @@ def profile_homepage(request):
 
 
 def save_profile(request):
+    current_user = request.user
+    if response.method == "POST":
+        form = UserProfileForm(response.POST)
+        if form.is_valid():
+            user_profile = Profile()
+            user_profile.profile_user = current_user
+            user_profile.age = form.cleaned_data['age']
+
+
+            user_profile.save()
+
+
+            
+
+
 
 
 
