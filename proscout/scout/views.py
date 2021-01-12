@@ -25,22 +25,32 @@ def index(request):
 def profile_homepage(request):
     current_user = request.user
     form = UserProfileForm()
-    print(current_user)
+   
     template = 'homepage.html'
     return render(request, template, {'user': current_user, 'form': form})
 
 
 def save_profile(request):
     current_user = request.user
+    print(current_user)
     if response.method == "POST":
         form = UserProfileForm(response.POST)
         if form.is_valid():
             user_profile = Profile()
             user_profile.profile_user = current_user
             user_profile.age = form.cleaned_data['age']
-
-
+            user_profile.height = form.cleaned_data['height']
+            user_profile.weight = form.cleaned_data['weight']
+            user_profile.country = form.cleaned_data['country']
+            user_profile.disciplines = form.cleaned_data['disciplines']
+            user_profile.headline = form.cleaned_data['headline']
+            user_profile.summary = form.cleaned_data['summary']
             user_profile.save()
+            return redirect("/index")
+        else:
+            form = UserProfileForm()
+    
+    return render(response, "homepage.html", {"form":form})
 
 
             
