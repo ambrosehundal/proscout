@@ -30,7 +30,7 @@ urlpatterns = [
     url('accounts/', include('django.contrib.auth.urls')),
     url('register/', v.register, name="register"),
     re_path(r'^$', s.index, name="index"),
-    url('home/profile/', s.save_profile, name="profile")
+    url('home/profile/create', s.save_profile, name="profile")
     
    
 
