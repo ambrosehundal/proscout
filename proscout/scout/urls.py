@@ -4,9 +4,11 @@ from django.contrib.auth.views import LoginView
 from . import views
 
 
+
 urlpatterns = [
     url('index', views.index, name='homepage'),
-    url('profile', views.profile_homepage, name='profile')
+    url('profile', views.profile_homepage, name='profile'),
+    url('profile/create', views.create_profile, name='create_profile')
 
 
 ]

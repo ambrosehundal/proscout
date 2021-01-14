@@ -15,7 +15,7 @@ MMA_CHOICES = (
 
 )
 
-class UserProfileForm(ModelForm):
+class UserProfileForm(forms.ModelForm):
 
     disciplines = forms.MultipleChoiceField(choices=MMA_CHOICES, widget=forms.CheckboxSelectMultiple)
     class Meta:
