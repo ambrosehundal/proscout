@@ -46,7 +46,7 @@
 <div class="col-md-6 col-lg-6">
 
 
-    <form action="{% url 'create_profile' %}" method="post">
+    <form method="post">
         {% csrf_token %}
         {{form | crispy}}
         
