@@ -42,7 +42,7 @@ def new_profile(request):
         else:
             form = UserProfileForm()
 
-    return render(response, "homepage.html", {"form":form})
+    return render(request, "homepage.html", {"form":form})
 
 
 
@@ -53,11 +53,20 @@ def new_profile(request):
 
 
 def profile_homepage(request):
+
+     
+    template = 'homepage.html'
     
     current_user = request.user
-    form = UserProfileForm()
-   
-    template = 'homepage.html'
+
+    #If User already has a profile, display profile instead of form
+    if Profile.objects.filter(user=current_user).exists():
+        user_profile = Profile.objects.get(user=current_user)
+
+        return render(request, template, {'user': current_user, 'profile':user_profile})
+    else:
+        form = UserProfileForm()
+  
     return render(request, template, {'user': current_user, 'form': form})
 
 

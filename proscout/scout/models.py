@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    profile_user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=1)
     first_name = models.CharField(max_length=50, default="Conor")
     last_name = models.CharField(max_length=50, default="Mcgregor")
     birth_date = models.DateField()
