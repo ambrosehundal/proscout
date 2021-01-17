@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
 from scout.forms import UserProfileForm
@@ -30,7 +31,7 @@ def new_profile(request):
         if form.is_valid():	        
             user_profile = Profile()	            
             user_profile.profile_user = current_user	          
-            user_profile.age = form.cleaned_data['age']	            
+            user_profile.birth_date = form.cleaned_data['birth_date']	            
             user_profile.height = form.cleaned_data['height']
             user_profile.weight = form.cleaned_data['weight']
             user_profile.country = form.cleaned_data['country']
@@ -51,7 +52,7 @@ def new_profile(request):
    
 
 
-
+@login_required
 def profile_homepage(request):
 
      
