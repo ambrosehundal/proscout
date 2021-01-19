@@ -18,6 +18,41 @@ class FriendList(models.Model):
         if not account in self.friends.all():
             self.friends.add(account)
             self.save()
+
+
+    def remove_friend(self, account):
+
+        if account in self.friends.all():
+            self.friends.remove(account)
+
+    def unfriend(self, removee):
+
+        # remove both people from friends list
+        remover_friends_list = self 
+
+        remover_friends_list.remove_friend(removee)
+
+        friends_list = FriendList.objects.get(user=removee)
+        friends_list.remove_friend(self.user)
+
+    
+    def is_mutual_friend(self, friend):
+
+        if friend in self.friends.all():
+            return True
+        
+        return False
+
+
+
+# class FriendRequest(models.Model):
+
+        
+
+
+
+
+
         
 
 
