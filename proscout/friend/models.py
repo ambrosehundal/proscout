@@ -59,18 +59,15 @@ class FriendRequest(models.Model):
     
 
     def accept(self):
-    """
-    ACCEPT A FRIEND REQUEST
-    UPDATE BOTH SENDER AND RECEIVER's FRIEND LISTS
-    """
-    receiver_friend_list = FriendList.objects.get(user=self.receiver)
-    if receiver_friend_list:
-        receiver_friend_list.add_friend(self.sender)
-        sender_friend_list = FriendList.objects.get(user=self.sender)
-        if sender_friend_list:
-            sender_friend_list.add_friend(self.receiver)
-            self.is_active = False
-            self.save()
+        #update sender and receiver's friend lists
+        receiver_friend_list = FriendList.objects.get(user=self.receiver)
+        if receiver_friend_list:
+            receiver_friend_list.add_friend(self.sender)
+            sender_friend_list = FriendList.objects.get(user=self.sender)
+            if sender_friend_list:
+                sender_friend_list.add_friend(self.receiver)
+                self.is_active = False
+                self.save()
 
 
 
