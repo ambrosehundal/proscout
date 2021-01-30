@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 
-
+{% load crispy_forms_tags %}
 <!-- NAVBAR -->
 
  <nav class="navbar navbar-expand-lg" style="background-color: green;" >
@@ -21,51 +21,40 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                       </div>
                     </li> {% endcomment %}
-                    <a  class="navbar-brand" style="color:white;float:right;"href="{% url 'logout' %}">Logout</a>
+                  
                   
               </nav>
 
     <!-- NAVBAR ends here -->
 
     <body>
-        
-
-    <br>
-
-<div class="col-md-3 col-lg-3">
-{% if user.is_authenticated %}
-            <h2>Hello {{user}}! </h2>
-         
+        {% if user.is_authenticated %}
+            <p>Hello {{user}}! </p>
+            <h3>My Profile</h3>
 
             <br>
-           
+             <p><a href="{% url 'logout' %}">Logout</a></p>
         {% else %}
            
         {% endif %}
   
+
+    <br>
+
+<div class="col-md-3 col-lg-3">
 
 
 </div>
 
 <div class="col-md-6 col-lg-6">
 
-    <h2 style="text-align:center">My Profile</h2>
-   
-<div class="row">
 
-    <h3>About</h3>
-
-    <h3> {{ profile.headline }}</h3>
-
-    <br>
-
-    <h3> {{ profile.summary }}</h3>
-
-
-
-
-
-</div>
+    <form method="post" action="{% url 'create_new_profile' %}">
+        {% csrf_token %}
+        {{form | crispy}}
+        
+        <input type="submit">Create
+    </form>
 
     
 </div>

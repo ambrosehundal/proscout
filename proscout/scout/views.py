@@ -25,12 +25,14 @@ def index(request):
 # function for logged in user to create a new profile
 def new_profile(request):
     current_user = request.user
-    print(current_user)
+    
+    print("Balle")
+    print(request.method)
     if request.method == "POST":	    
-        form = UserProfileForm(request.POST)	        
+        form = UserProfileForm(request.POST, instance=request.user)	        
         if form.is_valid():	        
             user_profile = Profile()	            
-            user_profile.profile_user = current_user	          
+            user_profile.profile_user = request.user	          
             user_profile.birth_date = form.cleaned_data['birth_date']	            
             user_profile.height = form.cleaned_data['height']
             user_profile.weight = form.cleaned_data['weight']
@@ -41,9 +43,10 @@ def new_profile(request):
             user_profile.save()	            
             return redirect("/")
         else:
+            print("Not valid")
             form = UserProfileForm()
 
-    return render(request, "homepage.html", {"form":form})
+    return render(request, "profile.html", {"form":form})
 
 
 
@@ -56,19 +59,22 @@ def new_profile(request):
 def profile_homepage(request):
 
      
-    template = 'homepage.html'
+    create_profile_template = 'profile.html'
+
+    profile_template = 'homepage.html'
     
     current_user = request.user
 
     #If User already has a profile, display profile instead of form
     if Profile.objects.filter(user=current_user).exists():
         user_profile = Profile.objects.get(user=current_user)
+        print("profile exists")
 
-        return render(request, template, {'user': current_user, 'profile':user_profile})
+        return render(request, profile_template, {'user': current_user, 'profile':user_profile})
     else:
         form = UserProfileForm()
   
-    return render(request, template, {'user': current_user, 'form': form})
+    return render(request, create_profile_template, {'user': current_user, 'form': form})
 
 
 
