@@ -47,22 +47,34 @@
 
 </div>
 
-<div class="col-md-6 col-lg-6">
+<div class="col-md-6 col-lg-6" style="box-shadow: 5px 5px 5px 5px grey;padding: 5%;">
 
     <h2 style="text-align:center">My Profile</h2>
+
+    <img src="{{profile.image.url}}" width="350" height="350">
    
 <div class="row">
 
     <h3>About</h3>
-
+    <br>
+    
     <h3> {{ profile.headline }}</h3>
 
     <br>
-
+    <p>Summary: </p>
     <h3> {{ profile.summary }}</h3>
 
+    <br>
+    <h5>Hometown</h5>
+    <p>{{profile.hometown}}</p>
 
 
+    <br>
+    <p>{{profile.disciplines}}</p>
+
+    <br>
+    <br>
+        
 
 
 </div>
