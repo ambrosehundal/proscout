@@ -25,14 +25,14 @@ def index(request):
 # function for logged in user to create a new profile
 def new_profile(request):
     current_user = request.user
-    
+    print(current_user)
     print("Balle")
     print(request.method)
     if request.method == "POST":	    
-        form = UserProfileForm(request.POST, instance=request.user)	        
+        form = UserProfileForm(request.POST)	        
         if form.is_valid():	        
             user_profile = Profile()	            
-            user_profile.profile_user = request.user	          
+            user_profile.user = request.user	          
             user_profile.birth_date = form.cleaned_data['birth_date']	            
             user_profile.height = form.cleaned_data['height']
             user_profile.weight = form.cleaned_data['weight']
