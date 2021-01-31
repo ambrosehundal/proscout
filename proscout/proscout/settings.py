@@ -47,8 +47,8 @@ INSTALLED_APPS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
+    # 'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
 )
 
 MIDDLEWARE = [
@@ -139,15 +139,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'proscout/media')
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
 
-
-LOGIN_URL = '/auth/login/google-oauth2/'
+LOGIN_URL = '/accounts/login'
+# LOGIN_URL = '/auth/login/google-oauth2/'
 LOGIN_REDIRECT_URL = '/home/profile'
 LOGOUT_REDIRECT_URL = '/'
 
 
 
 #SOCIAL AUTH GOOGLE
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '647209399838-94rcrabvi2v16jg4dknadnpsbshs8hau'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'FNzj04ehFCfjYFO59kqxNTR4'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'

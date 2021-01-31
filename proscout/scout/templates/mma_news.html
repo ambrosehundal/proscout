@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+<!-- NAVBAR -->
+
+ <nav class="navbar navbar-expand-lg" style="background-color: green;" >
+                <a class="navbar-brand" href="#" style="color:white;">Scoutmaster</a>
+              
+                
+                    {% comment %} <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </li> {% endcomment %}
+                    <a  class="navbar-brand" style="color:white;float:right;"href="{% url 'logout' %}">Logout</a>
+                  
+              </nav>
+
+    <!-- NAVBAR ends here -->
+
+    <body>
+        
+
+    <br>
+
+<div class="col-md-3 col-lg-3">
+
+  
+
+
+</div>
+
+<div class="col-md-6 col-lg-6" style="box-shadow: 5px 5px 5px 5px grey;padding: 5%;">
+
+
+<h3>MMA NEWS</h3>
+
+
+{% for post in posts %}
+  <div class="row">
+    {{post}}
+  </div>
+{% endfor %}
+
+
+<div class
+
+   
+    
+</div>
+
+<div class="col-md-3 col-lg-3">
+
+
+</div>
+    
+    
+    
+    </body>
+
+
+
+
+</html>

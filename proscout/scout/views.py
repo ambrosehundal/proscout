@@ -15,10 +15,10 @@ from scout.forms import UserProfileForm
 from .models import Profile
 
 
-
 import requests
 import praw
 # Create your views here.
+
 
 # homepage
 def index(request):
@@ -30,9 +30,6 @@ def index(request):
 # function for logged in user to create a new profile
 def new_profile(request):
     current_user = request.user
-    print(current_user)
-    print("Balle")
-    print(request.method)
     if request.method == "POST":	    
         form = UserProfileForm(request.POST)	        
         if form.is_valid():	        
@@ -83,13 +80,34 @@ def profile_homepage(request):
 
 
 
+def mma_subreddit(request):
+    mma_news_template = 'mma_news.html'
+   
 
-def mma_subreddit():
-    reddit = praw.Reddit(client_id='PERSONAL_USE_SCRIPT_14_CHARS', \
-                     client_secret='SECRET_KEY_27_CHARS ', \
-                     user_agent='YOUR_APP_NAME', \
-                     username='YOUR_REDDIT_USER_NAME', \
-                     password='YOUR_REDDIT_LOGIN_PASSWORD')         
+    mma_subreddit = reddit.subreddit("mma").hot(limit=15)
+
+    subreddit_results = []
+
+    for post in mma_subreddit:
+        subreddit_results.append(post)
+
+
+    return render(request, mma_news_template, {'posts': subreddit_results} )
+
+    
+        
+
+
+    
+
+
+ 
+
+
+    
+
+   
+    
 
 
 
