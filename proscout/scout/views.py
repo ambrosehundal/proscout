@@ -13,6 +13,11 @@ from django.contrib.auth.forms import UserCreationForm
 from scout.forms import UserProfileForm
 
 from .models import Profile
+
+
+
+import requests
+import praw
 # Create your views here.
 
 # homepage
@@ -79,7 +84,12 @@ def profile_homepage(request):
 
 
 
-            
+def mma_subreddit():
+    reddit = praw.Reddit(client_id='PERSONAL_USE_SCRIPT_14_CHARS', \
+                     client_secret='SECRET_KEY_27_CHARS ', \
+                     user_agent='YOUR_APP_NAME', \
+                     username='YOUR_REDDIT_USER_NAME', \
+                     password='YOUR_REDDIT_LOGIN_PASSWORD')         
 
 
 
