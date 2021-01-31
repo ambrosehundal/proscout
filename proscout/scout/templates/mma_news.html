@@ -46,9 +46,13 @@
 
 
 {% for post in posts %}
-  <div class="row">
-    {{post}}
+  <div class="row" style="box-shadow: 5px 5px 5px 5px grey;padding: 5%;">
+    <h4><a href="{{post.url}}"><b>{{post.title}}<b></a></h4>
+   
+    <p>{{post.num_comments}}</p>
   </div>
+  <br>
+  <br>
 {% endfor %}
 
 
@@ -65,7 +69,7 @@
     
     
     
-    </body>
+    </body >
 
 
 
