@@ -82,7 +82,10 @@ def profile_homepage(request):
 
 def mma_subreddit(request):
     mma_news_template = 'mma_news.html'
-    
+    reddit = praw.Reddit(client_id='', \
+                     client_secret='', \
+                     user_agent='mma', \
+                    )  
 
     mma_subreddit = reddit.subreddit("mma").hot(limit=15)
 
