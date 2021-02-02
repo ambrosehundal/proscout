@@ -98,6 +98,27 @@ def mma_subreddit(request):
 
     return render(request, mma_news_template, {'posts': subreddit_results} )
 
+
+def ufc_subreddit(request):
+    ufc_posts_template = 'ufc_news.html'
+    reddit = praw.Reddit(client_id='', \
+                     client_secret='', \
+                     user_agent='mma', \
+                    )  
+
+    ufc_subreddit = reddit.subreddit("ufc").hot(limit=25)
+
+    subreddit_results = []
+
+    for post in ufc_subreddit:
+       
+        subreddit_results.append(post)
+
+
+    return render(request, ufc_posts_template, {'posts': subreddit_results} )
+
+
+
     
         
 
