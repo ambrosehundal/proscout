@@ -30,11 +30,26 @@ def send_friend_request(request, *args, **kwargs):
                     friend_request.save()
                     payload['response'] = "Friend request created"
                 except Exception as e:
-                    raise e 
+                    payload['response'] = str(e)
 
             
-            except Exception as e:
-                raise e
+            except FriendRequest.DoesNotExist:
+                friend_request = FriendRequest(sender=user, receiver=receiver)
+                friend_request.save()
+                payload['response'] = "Friend request created"
+
+            if payload['response'] = None:
+                payload['response'] = "Something went wrong"
+        
+        else:
+            payload['response'] = "Unable to send a friend request"
+    else:
+        payload['response'] = "You must be unathenticated to send a friend request"
+
+    return HttpResponse(json.dumps(payload), content_type="application/json")
+    
+        
+                
 
 
 
