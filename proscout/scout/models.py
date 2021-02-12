@@ -23,7 +23,9 @@ class Profile(models.Model):
     headline = models.CharField(max_length=150, blank=True)
     summary = models.CharField(max_length=200, blank=True)
     image = models.ImageField(upload_to='profile_image', blank=True)
+    role = models.CharField(max_length=255, null=True)
     
+
     
 
 
