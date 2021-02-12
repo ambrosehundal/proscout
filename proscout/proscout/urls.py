@@ -31,7 +31,7 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url('home/', include('scout.urls')),
     url('accounts/', include('django.contrib.auth.urls')),
-    url('friend/', include('friend.urls', namespace='friend'))
+    url('friend/', include('friend.urls', namespace='friend')),
     url('register/', v.register, name="register"),
     re_path(r'^$', s.index, name="index"),
     url('', include('social_django.urls', namespace='social'))

@@ -24,6 +24,7 @@ class Profile(models.Model):
     summary = models.CharField(max_length=200, blank=True)
     image = models.ImageField(upload_to='profile_image', blank=True)
     
+    
 
 
 

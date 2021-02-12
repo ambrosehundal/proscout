@@ -17,6 +17,9 @@
                     <li class="nav-item">
                       <a class="nav-link" href="/register" style="color:white;">Sign up</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/accounts/login" style="color:white;">Sign in</a>
+                    </li>
                     {% comment %} <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dropdown
@@ -28,8 +31,8 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                       </div>
                     </li> {% endcomment %}
-                    <a  href="{% url 'logout' %}">Logout</a>
-                  <a  class="navbar-brand" style="color:white;float:right;"href="{% url 'mma_news' %}">MMA</a>
+                    {% comment %} <a  href="{% url 'logout' %}">Logout</a> {% endcomment %}
+                  
                 </div>
               </nav>
         
@@ -41,21 +44,38 @@
               <br>
               <br>
            
-    {% if user.is_authenticated %}
+    {% comment %} {% if user.is_authenticated %}
       <p>Logged as {{ user.username }}</p>
     
     {% else %}
       <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">
         Login with Google
       </a>
-    {% endif %}
+    {% endif %} {% endcomment %}
   </div>
               <br>
               <br>
               <br>
               <br>
+              <br>
+              <br>
+              <br>
+              <br>
 
-            <h3 style="text-align:center">Site for MMA fighters to find training partners to prepare/train for fights</h3>
+<br>
+              <br>
+              <br>
+              <br>
+
+
+            <div style="margin-left:30%;width:30%;text-align:center;box-shadow: 5px 5px 5px 5px grey;padding: 5%;">
+            <p>Find a training partner</p>
+            <br>
+            <p>Find a coach </p>
+            <br>
+            <p>Attend a camp</p>
+            <h6>Under construction</h6>
+            </div>
 
                
           

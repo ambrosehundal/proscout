@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import json
-from account.models import Account
+from django.db import models
+
 from friend.models import FriendRequest
+
 
 
 # Create your views here.
@@ -14,7 +16,7 @@ def send_friend_request(request, *args, **kwargs):
     if request.method == "POST" and user.is_authenticated:
         user_id = request.POST.get("receiver_user_id")
         if user_id:
-            receiver = Account.objects.get(pk=user_id)
+            receiver = User.objects.get(pk=user_id)
             try:
                 # get any friend requests that are active
                 friend_requests = FriendRequest.objects.filter(sender=user, receiver=receiver)
@@ -38,7 +40,7 @@ def send_friend_request(request, *args, **kwargs):
                 friend_request.save()
                 payload['response'] = "Friend request created"
 
-            if payload['response'] = None:
+            if payload['response'] == None:
                 payload['response'] = "Something went wrong"
         
         else:

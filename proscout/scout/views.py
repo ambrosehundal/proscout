@@ -79,6 +79,15 @@ def profile_homepage(request):
     return render(request, create_profile_template, {'user': current_user, 'form': form})
 
 
+# def view_profile(request):
+
+
+#     profile_template = 'view-profile.html'
+
+
+
+
+
 
 def mma_subreddit(request):
     mma_news_template = 'mma_news.html'
