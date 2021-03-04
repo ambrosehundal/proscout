@@ -148,7 +148,7 @@ CRISPY_TEMPLATE_PACK="bootstrap4"
 
 LOGIN_URL = '/accounts/login'
 # LOGIN_URL = '/auth/login/google-oauth2/'
-LOGIN_REDIRECT_URL = '/home/profile'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 

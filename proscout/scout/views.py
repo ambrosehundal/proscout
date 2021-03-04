@@ -29,6 +29,7 @@ def index(request):
 
 # function for logged in user to create a new profile
 def new_profile(request):
+    form = UserProfileForm()
     current_user = request.user
     if request.method == "POST":	    
         form = UserProfileForm(request.POST)	        
@@ -57,26 +58,26 @@ def new_profile(request):
    
 
 
-@login_required
-def profile_homepage(request):
+# @login_required
+def profile_homepage(request, username):
 
-     
-    create_profile_template = 'profile.html'
+    
+    # create_profile_template = 'profile.html'
 
     profile_template = 'homepage.html'
     
-    current_user = request.user
+    print("YES")
 
     #If User already has a profile, display profile instead of form
-    if Profile.objects.filter(user=current_user).exists():
-        user_profile = Profile.objects.get(user=current_user)
+    if Profile.objects.filter(user=username).exists():
+        user_profile = Profile.objects.get(user=username)
         print("profile exists")
 
-        return render(request, profile_template, {'user': current_user, 'profile':user_profile})
-    else:
-        form = UserProfileForm()
+        return render(request, profile_template, {'profile':user_profile})
+    
+    return redirect("/profile/create")
   
-    return render(request, create_profile_template, {'user': current_user, 'form': form})
+    
 
 
 # def view_profile(request):
