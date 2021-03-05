@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'bootstrap4',
     'social_django',
-    'friend'
+    'friend',
+    'rest_framework'
 ]
 
 AUTHENTICATION_BACKENDS = (
