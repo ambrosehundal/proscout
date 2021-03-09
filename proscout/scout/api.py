@@ -5,13 +5,18 @@ from .serializers import ProfileSerializer
 from .models import Profile
 from django.contrib.auth.models import User
 
-class ProfileView(generics.ListAPIView):
+class ProfileView(generics.RetrieveUpdateAPIView):
     serializer_class = ProfileSerializer
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'homepage.html'
 
 
     def get(self, request, username=None):
+
+        if request.user.is_authenticated:
+        # 
+        # add edit model instance form    
+        
 
         username = self.kwargs['username']
 
