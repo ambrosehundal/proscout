@@ -4,6 +4,9 @@
 
 
 
+
+{% load crispy_forms_tags %}
+
 <!-- NAVBAR -->
 
  <nav class="navbar navbar-expand-lg" style="background-color: red;" >
@@ -34,28 +37,33 @@
     <br>
 
 <div class="col-md-3 col-lg-3">
-{% if user.is_authenticated %}
 
-        <form>
-            {{edit_form}}
-        </form>
-          
-           
-        {% else %}
-           
-        {% endif %}
   
-
-
 </div>
 
-<div class="col-md-6 col-lg-6" style="box-shadow: 5px 5px 5px 5px grey;padding: 5%;">
+<div class="col-md-6 col-lg-6"  style="box-shadow: 5px 5px 5px 5px grey;padding: 5%;">
 
     <h2 style="text-align:center">My Profile</h2>
+    {% if user.is_authenticated %}
+
+    <button class="btn btn-primary" onClick="EditForm()">Edit Profile</button>
+
+    <div id="edit_form" style="display:none;">
+    <form method="patch" action="{% url 'edit_profile' user %}">
+        {% csrf_token %}
+        {{edit_form | crispy}}
+        
+        <input type="submit">
+    </form>
+    </div>
+           
+    {% else %}
+           
+    {% endif %}
 
     {% comment %} <img src="{{profile.image.url}}" width="350" height="350"> {% endcomment %}
    
-<div class="row">
+<div class="row" id="profile">
 
     <h3>About</h3>
     <br>
@@ -97,3 +105,17 @@
 
 
 </html>
+
+
+
+<script>
+
+    function EditForm(){
+        document.getElementById("profile").style.display = 'none';
+        document.getElementById("edit_form").style.display = 'block';
+
+
+    }
+
+
+</script>

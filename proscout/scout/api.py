@@ -33,5 +33,6 @@ class ProfileView(generics.RetrieveUpdateAPIView):
         user_profile = Profile.objects.filter(user=user_id)
         return Response({'profile':user_profile})
 
-    # def put(self, request):
+    def patch(self, request, pk):
+        print("Waheguru")
 
