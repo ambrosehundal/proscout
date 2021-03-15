@@ -16,7 +16,7 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 
         if request.user.is_authenticated:
             user_id = User.objects.values_list('id', flat=True).get(username=request.user)
-            user_profile = Profile.objects.filter(user=user_id)
+            user_profile = Profile.objects.filter(user=user_id).first()
 
             profile_edit_form = UserProfileForm(instance=user_profile)
 
@@ -32,4 +32,6 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 
         user_profile = Profile.objects.filter(user=user_id)
         return Response({'profile':user_profile})
+
+    # def put(self, request):
 
