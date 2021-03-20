@@ -17,7 +17,7 @@ class ProfileView(generics.RetrieveAPIView):
               
         print("Waheguru")
 
-        if request.user.is_authenticated and request.user == self.kwargs['username']:
+        if request.user.is_authenticated:
             user_id = User.objects.values_list('id', flat=True).get(username=request.user)
             user_profile = Profile.objects.filter(user=user_id).first()
 
@@ -40,7 +40,14 @@ class UpdateProfile(generics.UpdateAPIView):
     serializer_class = ProfileSerializer
 
     
-    def patch(self, request):
+    def patch(self, request, user):
+        if request.method == 'PATCH':
+            form = UserProfileForm(data=request.PATCH, instance = request.user)
+            if form.is_valid():
+                form.save()
+
+                return redirect('/')
+        
 
 
 
