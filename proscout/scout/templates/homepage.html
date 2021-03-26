@@ -24,8 +24,8 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                       </div>
                     </li> {% endcomment %}
-                      <a  class="navbar-brand" style="color:white;float:right;"href="{% url 'mma_news' %}">MMA</a>
-                    <a  class="navbar-brand" style="color:white;float:right;"href="{% url 'logout' %}">Logout</a>
+                      <a  class="navbar-brand" style="color:white;float:right;"href="">MMA</a>
+                    <a  class="navbar-brand" style="color:white;float:right;"href="">Logout</a>
                   
               </nav>
 
@@ -49,7 +49,7 @@
     <button class="btn btn-primary" onClick="EditForm()">Edit Profile</button>
 
     <div id="edit_form" style="display:none;">
-    <form method="patch" action="{% url 'edit_profile' user %}">
+    <form method="POST" action="{% url 'update_profile' %}">
         {% csrf_token %}
         {{edit_form | crispy}}
         
@@ -81,6 +81,10 @@
 
     <br>
     <p>{{profile.disciplines}}</p>
+
+    <br>
+    <h5>Weight</h5>
+    <p>{{profile.weight}}</p>
 
     <br>
     <br>

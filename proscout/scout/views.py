@@ -80,10 +80,30 @@ def profile_homepage(request, username):
     
 
 
-# def view_profile(request):
+def update_profile(request):
+
+    if request.method == 'POST':
+        form = UserProfileForm(data=request.POST)
+        if form.is_valid():
+            profile = Profile.objects.get(user=request.user)
+            profile_form = UserProfileForm(request.POST, instance=profile)
+            profile_form.save()
+        
+            return redirect('/')
+        
+        return redirect('/home/profile/str:request.user')
 
 
-#     profile_template = 'view-profile.html'
+
+
+
+
+
+
+
+
+
+
 
 
 

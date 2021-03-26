@@ -36,17 +36,18 @@ class ProfileView(generics.RetrieveAPIView):
         return Response({'profile':user_profile})
 
 
-class UpdateProfile(generics.UpdateAPIView):
-    serializer_class = ProfileSerializer
+# class UpdateProfile(generics.UpdateAPIView):
+#     serializer_class = ProfileSerializer
 
     
-    def patch(self, request, user):
-        if request.method == 'PATCH':
-            form = UserProfileForm(data=request.PATCH, instance = request.user)
-            if form.is_valid():
-                form.save()
+#     def put(self, request, user):
+#         print("Great")
+#         if request.method == 'PUT':
+#             form = UserProfileForm(data=request.PUT, instance = request.user)
+#             if form.is_valid():
+#                 form.save()
 
-                return redirect('/')
+#                 return redirect('/')
         
 
 
