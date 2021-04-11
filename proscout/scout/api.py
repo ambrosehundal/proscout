@@ -15,12 +15,13 @@ class ProfileView(generics.RetrieveAPIView):
 
     def get(self, request, username=None):
               
+        print(request.user)
 
         username = self.kwargs['username']
         user_id = User.objects.values_list('id', flat=True).get(username=username)
         user_profile = Profile.objects.filter(user=user_id).first()
 
-        if request.user.is_authenticated and username == request.user:
+        if request.user.is_authenticated and username == str(request.user):
             user_id = User.objects.values_list('id', flat=True).get(username=request.user)
             authenticated_user_profile = Profile.objects.filter(user=user_id).first()
 

@@ -41,9 +41,9 @@
   
 </div>
 
-<div class="col-md-6 col-lg-6"  style="box-shadow: 5px 5px 5px 5px grey;padding: 5%;">
+<div class="col-md-6 col-lg-6"  style="border: 5px solid red;padding: 5%;">
 
-    <h2 style="text-align:center">My Profile</h2>
+    <h2 style="text-align:center">{{profile.first_name}}'s Profile</h2>
     {% if user.is_authenticated %}
 
     <button class="btn btn-primary" onClick="EditForm()">Edit Profile</button>
@@ -63,10 +63,12 @@
 
     {% comment %} <img src="{{profile.image.url}}" width="350" height="350"> {% endcomment %}
    
-<div class="row" id="profile">
+<div class="row" style="box-shadow: 5px 5px 5px 5px grey;padding: 5%;" id="profile">
 
-    <h3>About</h3>
-    <br>
+
+    <img src="{{profile.image}}">
+    <h6>About</h6>
+    
     
     <h3> {{ profile.headline }}</h3>
 
@@ -74,14 +76,22 @@
     <p>Summary: </p>
     <h3> {{ profile.summary }}</h3>
 
-    <br>
+</div>
+
+<br>
+<br>
+<div class="row" style="box-shadow: 5px 5px 5px 5px grey;padding: 5%;">
+
+  <br>
     <h5>Hometown</h5>
     <p>{{profile.hometown}}</p>
-
-
     <br>
+    <h5>Disciplines</h5>
+    {% if '1' in profile.disciplines %}
+    <p>Boxing</p>
+    {% else %}
     <p>{{profile.disciplines}}</p>
-
+    {% endif %}
     <br>
     <h5>Weight</h5>
     <p>{{profile.weight}}</p>
@@ -90,8 +100,11 @@
     <br>
         
 
-
 </div>
+    
+
+
+
 
     
 </div>
