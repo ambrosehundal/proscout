@@ -15,24 +15,23 @@ class ProfileView(generics.RetrieveAPIView):
 
     def get(self, request, username=None):
               
-        print("Waheguru")
 
-        if request.user.is_authenticated:
+        username = self.kwargs['username']
+        user_id = User.objects.values_list('id', flat=True).get(username=username)
+        user_profile = Profile.objects.filter(user=user_id).first()
+
+        if request.user.is_authenticated and username == request.user:
             user_id = User.objects.values_list('id', flat=True).get(username=request.user)
-            user_profile = Profile.objects.filter(user=user_id).first()
+            authenticated_user_profile = Profile.objects.filter(user=user_id).first()
 
-            profile_edit_form = UserProfileForm(instance=user_profile)
+            profile_edit_form = UserProfileForm(instance=authenticated_user_profile)
 
             return Response({'profile':user_profile, 'edit_form':profile_edit_form})
        
 
         
 
-        username = self.kwargs['username']
-
-        user_id = User.objects.values_list('id', flat=True).get(username=username)
-
-        user_profile = Profile.objects.filter(user=user_id)
+        
         return Response({'profile':user_profile})
 
 

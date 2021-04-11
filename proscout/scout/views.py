@@ -89,9 +89,9 @@ def update_profile(request):
             profile_form = UserProfileForm(request.POST, instance=profile)
             profile_form.save()
         
+            return redirect('/home/profile/str:request.user')
+        else:
             return redirect('/')
-        
-        return redirect('/home/profile/str:request.user')
 
 
 

@@ -30,6 +30,8 @@ class Profile(models.Model):
     role = models.CharField(max_length=255, null=True)
     
 
+    def __str__(self):
+        return self.headline
     
 # class Experience(models.Model)
 
