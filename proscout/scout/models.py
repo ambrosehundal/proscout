@@ -22,8 +22,9 @@ class Profile(models.Model):
     country = models.CharField(max_length=30, null=True)
     disciplines = models.CharField(max_length=255, blank=True) # martial art disciplines
     mma_experience_level = models.CharField(max_length=50, blank=True)
-    # wins = models.IntegerField(default=0, blank=True)
-    # losses = models.IntegerField(default=0, blank=True)
+    wins = models.IntegerField(default=0, blank=True)
+    losses = models.IntegerField(default=0, blank=True)
+    draws = models.IntegerField(default=0, blank=True)
     headline = models.CharField(max_length=150, blank=True)
     summary = models.CharField(max_length=200, blank=True)
     image = models.ImageField(upload_to='profile_image', blank=True)
